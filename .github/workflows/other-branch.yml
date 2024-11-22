@@ -7,6 +7,15 @@ on:
 
 jobs:
 
+  error:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Imprimir mensaje de error
+        run: |
+          echo "Este jobs genero un error"
+          exit 1
+
 
   build:
     runs-on: ubuntu-latest
@@ -21,14 +30,8 @@ jobs:
           echo "Branch: ${{ github.ref_name }}"
       - name: Run test
         run: echo "Run Test"
+        
 
-#  error:
-#    runs-on: ubuntu-latest
 
-#    steps:
-#      - name: Imprimir mensaje de error
-#        run: |
-#          echo "Este jobs genero un error"
-#          exit 1
 
 

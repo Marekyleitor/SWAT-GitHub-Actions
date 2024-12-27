@@ -31,9 +31,18 @@ jobs:
           cd test
           npx cypress run 
 
-      # 5. Publicar videos en GitHub
+      # 5. Publicar videos en GitHub (solo si los tests tienen éxito)
       - name: Publish Cypress Videos
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: test/cypress/videos
+
+      # 6. Publicar capturas de pantalla en GitHub (solo si hay fallos)
+      - name: Publish Cypress Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: test/cypress/screenshots

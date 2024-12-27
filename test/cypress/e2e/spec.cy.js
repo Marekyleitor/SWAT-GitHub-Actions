@@ -2,7 +2,7 @@ describe('template spec', () => {
   beforeEach(() => {
     cy.visit('https://www.rimac.com/comprar/soat-digital')
   })
-  it('Happy path', () => {
+  it.only('Happy path', () => {
     // cy.visit('https://example.cypress.io')
     //consumo del api
     cy.get("#\\:ride\\:1").type("abc-123")

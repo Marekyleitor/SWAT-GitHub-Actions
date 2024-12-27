@@ -2,7 +2,7 @@ describe('template spec', () => {
   beforeEach(() => {
     cy.visit('https://www.rimac.com/comprar/soat-digital')
   })
-  it.only('Happy path', () => {
+  it.only('Happy path', () => { 
     // cy.visit('https://example.cypress.io')
     //consumo del api
     cy.get("#\\:ride\\:1").type("abc-123")
@@ -25,6 +25,8 @@ describe('template spec', () => {
     cy.get("#section-hero > div > div.rgrid-hero_form > form > button").click()
     //realizar validacion de un elemento existente
     cy.wait(1000);
-    cy.contains("Ingresa un número de placa válido")
+    cy.contains("Ingresa un número de placa válido ")
   })
 })
+
+

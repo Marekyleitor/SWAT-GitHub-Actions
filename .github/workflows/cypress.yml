@@ -37,10 +37,11 @@ jobs:
         with:
           name: cypress-results
           path: test/cypress/videos 
+
       # 6. Publicar resultados en GitHub
       - name: Publish cypress/screenshots 
         if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: cypress-results
-          path: test/cypress/screnshots 
+          path: test/cypress/screenshots 

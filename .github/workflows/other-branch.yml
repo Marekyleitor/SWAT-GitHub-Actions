@@ -8,7 +8,7 @@ on:
 jobs:
 
   error:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Imprimir mensaje de error
@@ -19,7 +19,7 @@ jobs:
 
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code

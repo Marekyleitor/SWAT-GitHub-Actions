@@ -39,6 +39,7 @@ jobs:
       - name: Deploy
         run: curl ${{ vars.IP }}/?pfolder=${{ secrets.RUTA }}
  
+ 
   verify:
     runs-on: ubuntu-latest
     needs: deploy
@@ -50,7 +51,7 @@ jobs:
       - name: Verify deployment
         run: |
           set -e
-          expected_response="informe"  # Text expected on the page
+          expected_response="Informe"  # Text expected on the page
           
           # Make the HTTP request and store the status code
           status_code=$(curl -k -sL -w "%{http_code}" -o /dev/null ${{ vars.DOMAIN }})

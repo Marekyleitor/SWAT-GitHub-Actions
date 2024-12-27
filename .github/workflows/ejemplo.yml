@@ -39,6 +39,7 @@ jobs:
       - name: Deploy
         run: curl ${{ vars.IP }}/?pfolder=${{ secrets.RUTA }}
  
+ 
   verify:
     runs-on: ubuntu-latest
     needs: deploy

@@ -1,0 +1,7 @@
+services:
+  cypress:
+    build: .
+    container_name: cypress-container
+    volumes:
+      - .:/e2e
+    command: ["npx", "cypress", "run"]

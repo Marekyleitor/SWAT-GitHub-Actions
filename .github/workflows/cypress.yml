@@ -1,0 +1,48 @@
+name: Run Cypress Tests
+
+on:
+  push:
+    branches:
+      - cypress
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configurar Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Instalar dependencias
+      - name: Install dependencies
+        run: |
+          cd test
+          npm install
+
+      # 4. Ejecutar los tests de Cypress
+      - name: Run Cypress Tests
+        run: |
+          cd test
+          npx cypress run 
+
+      # 5. Publicar videos en GitHub (solo si los tests tienen éxito)
+      - name: Publish Cypress Videos
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: test/cypress/videos
+
+      # 6. Publicar capturas de pantalla en GitHub (solo si hay fallos)
+      - name: Publish Cypress Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: test/cypress/screenshots

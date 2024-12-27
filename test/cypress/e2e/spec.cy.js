@@ -17,7 +17,8 @@ describe('template spec', () => {
     // cy.contains('Texto dinámico', { timeout: 15000 }).should('exist');
     cy.get('.form-rimac__subtitle').contains("ABC-123")
   })
-  it('Placa Errada', () => {
+
+  it('Placa Errada - Error', () => {
     // cy.visit('https://example.cypress.io')
     //consumo del api
     cy.get("#\\:ride\\:1").type("abc-123")

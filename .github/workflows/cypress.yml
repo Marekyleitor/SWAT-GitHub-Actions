@@ -5,10 +5,9 @@ on:
     branches:
       - cypress
 
-
 jobs:
   cypress-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
@@ -32,10 +31,18 @@ jobs:
           cd test
           npx cypress run 
 
-      # 5. (Opcional) Publicar resultados en GitHub
-      - name: Publish Cypress Results
-        if: failure()
-        uses: actions/upload-artifact@v3
+      # 5. Publicar videos en GitHub (solo si los tests tienen éxito)
+      - name: Publish Cypress Videos
+        if: success()
+        uses: actions/upload-artifact@v4
         with:
-          name: cypress-results
-          path: test/cypress/videos 
+          name: cypress-videos
+          path: test/cypress/videos
+
+      # 6. Publicar capturas de pantalla en GitHub (solo si hay fallos)
+      - name: Publish Cypress Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: test/cypress/screenshots

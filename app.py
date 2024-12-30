@@ -5,7 +5,7 @@ def print_username():
     username = os.getenv('USERNAME')
     
     if username:
-        print(f"El valor de USERNAME es: {username}")
+        print(f"El valor de USERNAME es el siguiente: {username}")
     else:
         print("La variable de entorno USERNAME -? no está definida.") 
  
